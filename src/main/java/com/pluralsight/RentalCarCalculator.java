@@ -1,5 +1,6 @@
 package com.pluralsight;
 
+import java.util.Locale;
 import java.util.Scanner;
 
 public class RentalCarCalculator {
@@ -35,6 +36,22 @@ public class RentalCarCalculator {
         System.out.println("Please enter your curent age: ");
         currentAge = myscanner.nextInt();
 
-
+        // if/else statements to calculate total cost
+        double basicRental = 29.99; // starting base cost
+        // surcharge for drivers under 25
+        if (currentAge < 25) {
+            basicRental += basicRental * .25;
+            System.out.println("You will receive a surcharge of 25% for drivers under 25.");
+        }
+        if (tollTag.equalsIgnoreCase("yes")) {
+            basicRental = basicRental + (3.95 * rentalDays);
+        }
+        if(GPS.equalsIgnoreCase("yes")) {
+            basicRental = basicRental + (2.95 * rentalDays);
+        }
+        if (roadsideHelp.equalsIgnoreCase("yes")) {
+            basicRental = basicRental + (3.95 * rentalDays);
+        }
+        System.out.printf("Your final cost is: $%.2f", basicRental);
     }
 }
